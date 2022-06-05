@@ -1,69 +1,85 @@
 ﻿
 @{
-    ViewBag.Title = "Register";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Đăng ký";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
 
-<table align="center">
-    <h2 style="text-align:center">ĐĂNG KÝ THÀNH VIÊN</h2>
-    @using (Html.BeginForm())
-    {
-        @Html.ValidationSummary(true)
-        <tr style="height:40px">
-            <td> Họ tên khách hàng:</td>
-            <td>
-                @Html.TextBox("Hoten")
-                @ViewData["Loi1"]
-            </td>
-        </tr>
-        <tr style="height:40px">
-            <td> Giới tính:</td>
-            <td>
-                @Html.TextBox("GioiTinh")
-                @ViewData["Loi2"]
-            </td>
-        </tr>
-        <tr style="height:40px">
-            <td> Email:</td>
-            <td>
-                @Html.TextBox("email")
-                @ViewData["Loi3"]
-            </td>
-        </tr>
-        <tr style="height:40px">
-            <td> Sđt:</td>
-            <td>
-                @Html.TextBox("sdt")
-                @ViewData["Loi4"]
-            </td>
-        </tr>
-        <tr style="height:40px">
-            <td>  Tên đăng nhập:</td>
-            <td>
-                @Html.TextBox("tdn")
-                @ViewData["Loi5"]
-            </td>
-        </tr>
-        <tr style="height:40px">
-            <td>  Mật khẩu:</td>
-            <td>
-                @Html.Password("Matkhau")
-                @ViewData["Loi6"]
-            </td>
-        </tr>
-        <tr style="height:40px">
-            <td>Mật khẩu nhập lại: </td>
-            <td>
-                @Html.Password("Matkhaunhaplai")
-                @ViewData["Loi7"]
-            </td>
-        </tr>
-        <tr style="height:40px">
-            <td></td>
-            <td>
-                <input type="Submit" value="Đăng ký" />
-            </td>
-        </tr>
-    }
-</table>
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">ĐĂNG KÝ THÀNH VIÊN</h1>
+                            </div>
+                            @using (Html.BeginForm(new { @class = "user" }))
+                            {
+                                @Html.ValidationSummary(true)
+                                <div class="form-group">
+                                    @Html.TextBox("hoten", null, new { @class = "form-control form-control-user", id = "exampleName", placeholder = "Họ và tên" })
+                                    @ViewData["Loi1"]
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-9 mb-3 mb-sm-0">
+                                        @Html.TextBox("sdt", null, new { @class = "form-control form-control-user", id = "examplePhoneNumber", placeholder = "Số điện thoại" })
+                                        @ViewData["Loi4"]
+                                    </div>
+                                    <div class="col-sm-3">
+
+                                        @Html.DropDownList("Gioitinh", new List<SelectListItem>
+                                    {
+                                       new SelectListItem{ Text="Nam", Value = "Nam" },
+                                       new SelectListItem{ Text="Nữ", Value = "Nữ" },
+                                       new SelectListItem{ Text="Khác", Value = "Khác" }
+                                    }, "Chọn", new { @class = "btn dropdown-toggle" })
+                                        @ViewData["Loi2"]
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.TextBox("Email", null, new { type="email", @class = "form-control form-control-user", id = "exampleEmail", placeholder = "Địa chỉ email" })
+                                    @ViewData["Loi3"]
+                                </div>
+                                <div class="form-group">
+                                    @Html.TextBox("tdn", null, new { @class = "form-control form-control-user", id = "exampleUsername", placeholder = "Tên đăng nhập" })
+                                    @ViewData["Loi5"]
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        @Html.TextBox("Matkhau", null, new { type = "password", @class = "form-control form-control-user", id = "examplePassword", placeholder = "Mật khẩu" })
+                                        @ViewData["Loi6"]
+                                    </div>
+                                    <div class="col-sm-6">
+                                        @Html.TextBox("Matkhaunhaplai", null, new { type = "password", @class = "form-control form-control-user", id = "exampleRepeatPassword", placeholder = "Nhập lại mật khẩu" })
+                                        @ViewData["Loi7"]
+                                    </div>
+                                </div>
+                                <input class="btn btn-primary btn-user btn-block" type="Submit" value="Đăng ký" />
+                                <hr>
+                                <a href="index.html" class="btn btn-google btn-user btn-block">
+                                    <i class="fab fa-google fa-fw"></i> Đăng ký bằng Google
+                                </a>
+                                <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                    <i class="fab fa-facebook-f fa-fw"></i> Đăng ký bằng Facebook
+                                </a>
+                            }
+                            <hr>
+                            <div class="text-center">
+                                @Html.ActionLink("Quên mật khẩu", "ForgotPassword", new { @class = "small" })
+                            </div>
+                            <div class="text-center">
+                                @Html.ActionLink("Đã có tài khoản ? Đăng nhập", "Login", new { @class = "small" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    

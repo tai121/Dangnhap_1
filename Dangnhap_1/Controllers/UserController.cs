@@ -45,7 +45,7 @@ namespace Dangnhap_1.Controllers
         {
             // Gán các giá tị người dùng nhập liệu cho các biến 
             var hoten = collection["hoten"];
-            var gioitinh = collection["GioiTinh"];
+            var gioitinh = collection["Gioitinh"];
             var sdt = collection["sdt"];
             var tendn = collection["tdn"];
             var matkhau = collection["Matkhau"];
@@ -112,7 +112,7 @@ namespace Dangnhap_1.Controllers
         public ActionResult Login(FormCollection collection)
         {
             var tendn = collection["Tendn"];
-            var matkhau = collection["MatKhau"];
+            var matkhau = collection["Matkhau"];
             var ghinho = collection["GhiNho"];
             if (String.IsNullOrEmpty(tendn))
             {
@@ -133,6 +133,10 @@ namespace Dangnhap_1.Controllers
                 else
                     ViewBag.Thongbao = "Đăng nhập thất bại. Vui lòng thử lại!";
             }
+            return View();
+        }
+        public ActionResult ForgotPassword()
+        {
             return View();
         }
     }
