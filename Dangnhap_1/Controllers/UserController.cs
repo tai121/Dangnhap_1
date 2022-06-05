@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -31,13 +32,14 @@ namespace Dangnhap_1.Controllers
                 return false;
             }
         }
-        // action Register 
         [HttpGet]
+        [ValidateAntiForgeryToken]
         public ActionResult Register()
         {
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Register(FormCollection collection, NguoiDung nd)
         {
             // Gán các giá tị người dùng nhập liệu cho các biến 
@@ -48,7 +50,7 @@ namespace Dangnhap_1.Controllers
             var matkhau = collection["Matkhau"];
             var matkhaunhaplai = collection["Matkhaunhaplai"];
             var email = collection["email"];
-            // valadiate
+
             if (String.IsNullOrEmpty(hoten))
             {
                 ViewData["Loi1"] = "Họ tên khách hàng không được để trống";
@@ -98,14 +100,13 @@ namespace Dangnhap_1.Controllers
             }
             return this.Register();
         }
-        // Action Login
         [HttpGet]
+        [ValidateAntiForgeryToken]
 
         public ActionResult Login()
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult Login(FormCollection collection)
         {
@@ -132,84 +133,22 @@ namespace Dangnhap_1.Controllers
             }
             return View();
         }
-        // Forget password
+        [HttpGet]
+        [ValidateAntiForgeryToken]
 
-        Using Systems.Net.Mail;
-
-        public class Mail
+        public ActionResult ResetPassword()
         {
-            public MailAddress to { get; set; }
-            public MailAddress from { get; set; }
-            public string sub { get; set; }
-            public string body { get; set; }
-
-            public string reg()
-            {
-                string feed = "Registration Successful";
-                var m = new System.Net.Mail.MailMessage()
-                {
-                    Subject = "",
-                    Body = body,
-                    IsBodyHtml = true
-                };
-                m.From = new MailAddress("Mxolisi@gmail.com  ", "Administrator");
-                m.To.Add(to);
-                SmtpClient smtp = new SmtpClient
-                {
-                    Host = "pod51014.outlook.com",
-                    //Host = "smtp-mail.outlook.com",
-                    Port = 587,
-                    Credentials = new System.Net.NetworkCredential("Mxolisi@gmail.com ", " Dut324232"),
-                    EnableSsl = true
-                };
-
-                try
-                {
-                    smtp.Send(m);
-                    // feed = "";
-                }
-                catch (Exception e)
-                {
-
-                }
-
-                return feed;
-            }
-
-            public string fogot()
-            {
-                string feedback = "";
-
-                var m = new System.Net.Mail.MailMessage()
-                {
-                    Subject = "Reset mật khẩu",
-                    Body = body,
-                    IsBodyHtml = true
-                };
-                m.From = new MailAddress("Mxolisi@gmail.com ", "Administrator");
-                m.To.Add(to);
-                SmtpClient smtp = new SmtpClient
-                {
-                    Host = "pod51014.outlook.com",
-                    Port = 587,
-                    Credentials = new System.Net.NetworkCredential("Mxolisi@gmail.com ", "Dut324232"),
-                    EnableSsl = true
-                };
-
-                try
-                {
-                    smtp.Send(m);
-                    feedback = "Kiểm tra email của bạn để xác thực";
-                }
-                catch (Exception e)
-                {
-                    feedback = "Không thể gửi email:" + e.Message;
-                }
-                return feedback;
-            }
+            return View();
         }
 
-        // change password
+        [Authorize]
+        [ValidateAntiForgeryToken]
+
+        public ActionResult ShowInfor()
+        {
+            return View();
+        }
+
 
     }
 }
