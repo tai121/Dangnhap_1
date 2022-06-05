@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -31,16 +32,14 @@ namespace Dangnhap_1.Controllers
                 return false;
             }
         }
-        public ActionResult Index()
-        {
-            return View();
-        }
         [HttpGet]
+        [ValidateAntiForgeryToken]
         public ActionResult Register()
         {
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Register(FormCollection collection, NguoiDung nd)
         {
             // Gán các giá tị người dùng nhập liệu cho các biến 
@@ -102,12 +101,12 @@ namespace Dangnhap_1.Controllers
             return this.Register();
         }
         [HttpGet]
+        [ValidateAntiForgeryToken]
 
         public ActionResult Login()
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult Login(FormCollection collection)
         {
@@ -135,9 +134,29 @@ namespace Dangnhap_1.Controllers
             }
             return View();
         }
+<<<<<<< HEAD
         public ActionResult ForgotPassword()
         {
             return View();
         }
+=======
+        [HttpGet]
+        [ValidateAntiForgeryToken]
+
+        public ActionResult ResetPassword()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [ValidateAntiForgeryToken]
+
+        public ActionResult ShowInfor()
+        {
+            return View();
+        }
+
+
+>>>>>>> a87653eb7dd03b160097766ed600cecb17751cec
     }
 }
