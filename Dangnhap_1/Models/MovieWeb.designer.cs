@@ -90,7 +90,7 @@ namespace Dangnhap_1.Models
     #endregion
 		
 		public MovieWebDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["MovieWebConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["MovieWebConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -278,13 +278,13 @@ namespace Dangnhap_1.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _MaAdmin;
+		private long _MaAdmin;
 		
 		private string _TaiKhoanAdmin;
 		
 		private string _MatKhauAdmin;
 		
-		private string _tenAdmin;
+		private string _TenAdmin;
 		
 		private System.Nullable<System.DateTime> _NgayKhoiTao;
 		
@@ -292,14 +292,14 @@ namespace Dangnhap_1.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaAdminChanging(int value);
+    partial void OnMaAdminChanging(long value);
     partial void OnMaAdminChanged();
     partial void OnTaiKhoanAdminChanging(string value);
     partial void OnTaiKhoanAdminChanged();
     partial void OnMatKhauAdminChanging(string value);
     partial void OnMatKhauAdminChanged();
-    partial void OntenAdminChanging(string value);
-    partial void OntenAdminChanged();
+    partial void OnTenAdminChanging(string value);
+    partial void OnTenAdminChanged();
     partial void OnNgayKhoiTaoChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayKhoiTaoChanged();
     #endregion
@@ -309,8 +309,8 @@ namespace Dangnhap_1.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaAdmin", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MaAdmin
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaAdmin", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long MaAdmin
 		{
 			get
 			{
@@ -329,7 +329,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaiKhoanAdmin", DbType="Char(20)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaiKhoanAdmin", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 		public string TaiKhoanAdmin
 		{
 			get
@@ -349,7 +349,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatKhauAdmin", DbType="VarChar(30)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatKhauAdmin", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 		public string MatKhauAdmin
 		{
 			get
@@ -369,27 +369,27 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tenAdmin", DbType="NVarChar(35)")]
-		public string tenAdmin
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenAdmin", DbType="NVarChar(50)")]
+		public string TenAdmin
 		{
 			get
 			{
-				return this._tenAdmin;
+				return this._TenAdmin;
 			}
 			set
 			{
-				if ((this._tenAdmin != value))
+				if ((this._TenAdmin != value))
 				{
-					this.OntenAdminChanging(value);
+					this.OnTenAdminChanging(value);
 					this.SendPropertyChanging();
-					this._tenAdmin = value;
-					this.SendPropertyChanged("tenAdmin");
-					this.OntenAdminChanged();
+					this._TenAdmin = value;
+					this.SendPropertyChanged("TenAdmin");
+					this.OnTenAdminChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayKhoiTao", DbType="Date")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayKhoiTao", DbType="DateTime")]
 		public System.Nullable<System.DateTime> NgayKhoiTao
 		{
 			get
@@ -436,11 +436,11 @@ namespace Dangnhap_1.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _MaTheThanhVien;
+		private long _MaTheThanhVien;
+		
+		private long _MaNguoiDung;
 		
 		private System.Nullable<System.DateTime> _NgayBatDauTheThanhVien;
-		
-		private int _MaNguoiDung;
 		
 		private EntitySet<DangKyThanhVienVip> _DangKyThanhVienVips;
 		
@@ -450,12 +450,12 @@ namespace Dangnhap_1.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaTheThanhVienChanging(int value);
+    partial void OnMaTheThanhVienChanging(long value);
     partial void OnMaTheThanhVienChanged();
+    partial void OnMaNguoiDungChanging(long value);
+    partial void OnMaNguoiDungChanged();
     partial void OnNgayBatDauTheThanhVienChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayBatDauTheThanhVienChanged();
-    partial void OnMaNguoiDungChanging(int value);
-    partial void OnMaNguoiDungChanged();
     #endregion
 		
 		public TheThanhVien()
@@ -465,8 +465,8 @@ namespace Dangnhap_1.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTheThanhVien", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MaTheThanhVien
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTheThanhVien", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long MaTheThanhVien
 		{
 			get
 			{
@@ -485,28 +485,8 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayBatDauTheThanhVien", DbType="Date")]
-		public System.Nullable<System.DateTime> NgayBatDauTheThanhVien
-		{
-			get
-			{
-				return this._NgayBatDauTheThanhVien;
-			}
-			set
-			{
-				if ((this._NgayBatDauTheThanhVien != value))
-				{
-					this.OnNgayBatDauTheThanhVienChanging(value);
-					this.SendPropertyChanging();
-					this._NgayBatDauTheThanhVien = value;
-					this.SendPropertyChanged("NgayBatDauTheThanhVien");
-					this.OnNgayBatDauTheThanhVienChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNguoiDung", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int MaNguoiDung
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNguoiDung", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
+		public long MaNguoiDung
 		{
 			get
 			{
@@ -525,6 +505,26 @@ namespace Dangnhap_1.Models
 					this._MaNguoiDung = value;
 					this.SendPropertyChanged("MaNguoiDung");
 					this.OnMaNguoiDungChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayBatDauTheThanhVien", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayBatDauTheThanhVien
+		{
+			get
+			{
+				return this._NgayBatDauTheThanhVien;
+			}
+			set
+			{
+				if ((this._NgayBatDauTheThanhVien != value))
+				{
+					this.OnNgayBatDauTheThanhVienChanging(value);
+					this.SendPropertyChanging();
+					this._NgayBatDauTheThanhVien = value;
+					this.SendPropertyChanged("NgayBatDauTheThanhVien");
+					this.OnNgayBatDauTheThanhVienChanged();
 				}
 			}
 		}
@@ -569,7 +569,7 @@ namespace Dangnhap_1.Models
 					}
 					else
 					{
-						this._MaNguoiDung = default(int);
+						this._MaNguoiDung = default(long);
 					}
 					this.SendPropertyChanged("NguoiDung");
 				}
@@ -615,9 +615,9 @@ namespace Dangnhap_1.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _MaNguoiDung;
+		private long _MaNguoiDung;
 		
-		private int _MaPhuongThucTT;
+		private long _MaPhuongThucTT;
 		
 		private string _SoThe;
 		
@@ -635,9 +635,9 @@ namespace Dangnhap_1.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaNguoiDungChanging(int value);
+    partial void OnMaNguoiDungChanging(long value);
     partial void OnMaNguoiDungChanged();
-    partial void OnMaPhuongThucTTChanging(int value);
+    partial void OnMaPhuongThucTTChanging(long value);
     partial void OnMaPhuongThucTTChanged();
     partial void OnSoTheChanging(string value);
     partial void OnSoTheChanged();
@@ -656,8 +656,8 @@ namespace Dangnhap_1.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNguoiDung", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int MaNguoiDung
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNguoiDung", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
+		public long MaNguoiDung
 		{
 			get
 			{
@@ -680,8 +680,8 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPhuongThucTT", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int MaPhuongThucTT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPhuongThucTT", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
+		public long MaPhuongThucTT
 		{
 			get
 			{
@@ -724,7 +724,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoHuu", DbType="VarChar(35)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoHuu", DbType="NVarChar(50)")]
 		public string SoHuu
 		{
 			get
@@ -764,7 +764,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayHetHan", DbType="Date")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayHetHan", DbType="DateTime")]
 		public System.Nullable<System.DateTime> NgayHetHan
 		{
 			get
@@ -811,7 +811,7 @@ namespace Dangnhap_1.Models
 					}
 					else
 					{
-						this._MaNguoiDung = default(int);
+						this._MaNguoiDung = default(long);
 					}
 					this.SendPropertyChanged("NguoiDung");
 				}
@@ -845,7 +845,7 @@ namespace Dangnhap_1.Models
 					}
 					else
 					{
-						this._MaPhuongThucTT = default(int);
+						this._MaPhuongThucTT = default(long);
 					}
 					this.SendPropertyChanged("PhuongThucThanhToan");
 				}
@@ -879,17 +879,17 @@ namespace Dangnhap_1.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _MaDangKy;
+		private long _MaDangKy;
 		
-		private System.Nullable<int> _SoTien;
+		private System.Nullable<decimal> _SoTien;
 		
 		private System.Nullable<System.DateTime> _NgayThanhToan;
 		
 		private string _MoTaVeDangKy;
 		
-		private System.Nullable<int> _MaTheThanhVien;
+		private System.Nullable<long> _MaTheThanhVien;
 		
-		private System.Nullable<int> _MaNguoiDung;
+		private System.Nullable<long> _MaNguoiDung;
 		
 		private EntityRef<TheThanhVien> _TheThanhVien;
 		
@@ -897,17 +897,17 @@ namespace Dangnhap_1.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaDangKyChanging(int value);
+    partial void OnMaDangKyChanging(long value);
     partial void OnMaDangKyChanged();
-    partial void OnSoTienChanging(System.Nullable<int> value);
+    partial void OnSoTienChanging(System.Nullable<decimal> value);
     partial void OnSoTienChanged();
     partial void OnNgayThanhToanChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayThanhToanChanged();
     partial void OnMoTaVeDangKyChanging(string value);
     partial void OnMoTaVeDangKyChanged();
-    partial void OnMaTheThanhVienChanging(System.Nullable<int> value);
+    partial void OnMaTheThanhVienChanging(System.Nullable<long> value);
     partial void OnMaTheThanhVienChanged();
-    partial void OnMaNguoiDungChanging(System.Nullable<int> value);
+    partial void OnMaNguoiDungChanging(System.Nullable<long> value);
     partial void OnMaNguoiDungChanged();
     #endregion
 		
@@ -917,8 +917,8 @@ namespace Dangnhap_1.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDangKy", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MaDangKy
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDangKy", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
+		public long MaDangKy
 		{
 			get
 			{
@@ -937,8 +937,8 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoTien", DbType="Int")]
-		public System.Nullable<int> SoTien
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoTien", DbType="Money")]
+		public System.Nullable<decimal> SoTien
 		{
 			get
 			{
@@ -957,7 +957,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayThanhToan", DbType="Date")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayThanhToan", DbType="DateTime")]
 		public System.Nullable<System.DateTime> NgayThanhToan
 		{
 			get
@@ -977,7 +977,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoTaVeDangKy", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoTaVeDangKy", DbType="NVarChar(MAX)")]
 		public string MoTaVeDangKy
 		{
 			get
@@ -997,8 +997,8 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTheThanhVien", DbType="Int")]
-		public System.Nullable<int> MaTheThanhVien
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTheThanhVien", DbType="BigInt")]
+		public System.Nullable<long> MaTheThanhVien
 		{
 			get
 			{
@@ -1021,8 +1021,8 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNguoiDung", DbType="Int")]
-		public System.Nullable<int> MaNguoiDung
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNguoiDung", DbType="BigInt")]
+		public System.Nullable<long> MaNguoiDung
 		{
 			get
 			{
@@ -1073,8 +1073,8 @@ namespace Dangnhap_1.Models
 					}
 					else
 					{
-						this._MaTheThanhVien = default(Nullable<int>);
-						this._MaNguoiDung = default(Nullable<int>);
+						this._MaTheThanhVien = default(Nullable<long>);
+						this._MaNguoiDung = default(Nullable<long>);
 					}
 					this.SendPropertyChanged("TheThanhVien");
 				}
@@ -1108,7 +1108,7 @@ namespace Dangnhap_1.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _MaPhim;
+		private long _MaPhim;
 		
 		private System.Nullable<System.DateTime> _ThoiGianDanhGia;
 		
@@ -1118,7 +1118,7 @@ namespace Dangnhap_1.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaPhimChanging(int value);
+    partial void OnMaPhimChanging(long value);
     partial void OnMaPhimChanged();
     partial void OnThoiGianDanhGiaChanging(System.Nullable<System.DateTime> value);
     partial void OnThoiGianDanhGiaChanged();
@@ -1130,8 +1130,8 @@ namespace Dangnhap_1.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPhim", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int MaPhim
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPhim", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long MaPhim
 		{
 			get
 			{
@@ -1154,7 +1154,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThoiGianDanhGia", DbType="Date")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThoiGianDanhGia", DbType="DateTime")]
 		public System.Nullable<System.DateTime> ThoiGianDanhGia
 		{
 			get
@@ -1201,7 +1201,7 @@ namespace Dangnhap_1.Models
 					}
 					else
 					{
-						this._MaPhim = default(int);
+						this._MaPhim = default(long);
 					}
 					this.SendPropertyChanged("Phim");
 				}
@@ -1235,11 +1235,11 @@ namespace Dangnhap_1.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _MaPhim;
+		private long _MaPhim;
 		
-		private int _MaNguoiDung;
+		private long _MaNguoiDung;
 		
-		private System.Nullable<bool> _SoSao;
+		private System.Nullable<int> _SoSao;
 		
 		private System.Nullable<System.DateTime> _ThoiGianBinhLuan;
 		
@@ -1253,11 +1253,11 @@ namespace Dangnhap_1.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaPhimChanging(int value);
+    partial void OnMaPhimChanging(long value);
     partial void OnMaPhimChanged();
-    partial void OnMaNguoiDungChanging(int value);
+    partial void OnMaNguoiDungChanging(long value);
     partial void OnMaNguoiDungChanged();
-    partial void OnSoSaoChanging(System.Nullable<bool> value);
+    partial void OnSoSaoChanging(System.Nullable<int> value);
     partial void OnSoSaoChanged();
     partial void OnThoiGianBinhLuanChanging(System.Nullable<System.DateTime> value);
     partial void OnThoiGianBinhLuanChanged();
@@ -1272,8 +1272,8 @@ namespace Dangnhap_1.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPhim", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int MaPhim
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPhim", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
+		public long MaPhim
 		{
 			get
 			{
@@ -1296,8 +1296,8 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNguoiDung", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int MaNguoiDung
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNguoiDung", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
+		public long MaNguoiDung
 		{
 			get
 			{
@@ -1320,8 +1320,8 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoSao", DbType="Bit")]
-		public System.Nullable<bool> SoSao
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoSao", DbType="Int")]
+		public System.Nullable<int> SoSao
 		{
 			get
 			{
@@ -1340,7 +1340,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThoiGianBinhLuan", DbType="Date")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThoiGianBinhLuan", DbType="DateTime")]
 		public System.Nullable<System.DateTime> ThoiGianBinhLuan
 		{
 			get
@@ -1407,7 +1407,7 @@ namespace Dangnhap_1.Models
 					}
 					else
 					{
-						this._MaNguoiDung = default(int);
+						this._MaNguoiDung = default(long);
 					}
 					this.SendPropertyChanged("NguoiDung");
 				}
@@ -1441,7 +1441,7 @@ namespace Dangnhap_1.Models
 					}
 					else
 					{
-						this._MaPhim = default(int);
+						this._MaPhim = default(long);
 					}
 					this.SendPropertyChanged("Phim");
 				}
@@ -1475,7 +1475,7 @@ namespace Dangnhap_1.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _MaDaoDien;
+		private long _MaDaoDien;
 		
 		private string _TenDaoDien;
 		
@@ -1489,7 +1489,7 @@ namespace Dangnhap_1.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaDaoDienChanging(int value);
+    partial void OnMaDaoDienChanging(long value);
     partial void OnMaDaoDienChanged();
     partial void OnTenDaoDienChanging(string value);
     partial void OnTenDaoDienChanged();
@@ -1505,8 +1505,8 @@ namespace Dangnhap_1.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDaoDien", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MaDaoDien
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDaoDien", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long MaDaoDien
 		{
 			get
 			{
@@ -1525,7 +1525,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenDaoDien", DbType="NVarChar(35)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenDaoDien", DbType="NVarChar(50)")]
 		public string TenDaoDien
 		{
 			get
@@ -1545,7 +1545,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HinhAnhDaoDien", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HinhAnhDaoDien", DbType="VarChar(200)")]
 		public string HinhAnhDaoDien
 		{
 			get
@@ -1565,7 +1565,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoTaVeDaoDien", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoTaVeDaoDien", DbType="VarChar(MAX)")]
 		public string MoTaVeDaoDien
 		{
 			get
@@ -1637,9 +1637,9 @@ namespace Dangnhap_1.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _MaPhim;
+		private long _MaPhim;
 		
-		private int _MaDaoDien;
+		private long _MaDaoDien;
 		
 		private string _VaiTro;
 		
@@ -1651,9 +1651,9 @@ namespace Dangnhap_1.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaPhimChanging(int value);
+    partial void OnMaPhimChanging(long value);
     partial void OnMaPhimChanged();
-    partial void OnMaDaoDienChanging(int value);
+    partial void OnMaDaoDienChanging(long value);
     partial void OnMaDaoDienChanged();
     partial void OnVaiTroChanging(string value);
     partial void OnVaiTroChanged();
@@ -1666,8 +1666,8 @@ namespace Dangnhap_1.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPhim", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int MaPhim
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPhim", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
+		public long MaPhim
 		{
 			get
 			{
@@ -1690,8 +1690,8 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDaoDien", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int MaDaoDien
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDaoDien", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
+		public long MaDaoDien
 		{
 			get
 			{
@@ -1714,7 +1714,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VaiTro", DbType="NVarChar(10)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VaiTro", DbType="NVarChar(50)")]
 		public string VaiTro
 		{
 			get
@@ -1761,7 +1761,7 @@ namespace Dangnhap_1.Models
 					}
 					else
 					{
-						this._MaDaoDien = default(int);
+						this._MaDaoDien = default(long);
 					}
 					this.SendPropertyChanged("DaoDien");
 				}
@@ -1795,7 +1795,7 @@ namespace Dangnhap_1.Models
 					}
 					else
 					{
-						this._MaPhim = default(int);
+						this._MaPhim = default(long);
 					}
 					this.SendPropertyChanged("Phim");
 				}
@@ -1829,7 +1829,7 @@ namespace Dangnhap_1.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _MaNuoc;
+		private long _MaNuoc;
 		
 		private string _TenNuoc;
 		
@@ -1841,7 +1841,7 @@ namespace Dangnhap_1.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaNuocChanging(int value);
+    partial void OnMaNuocChanging(long value);
     partial void OnMaNuocChanged();
     partial void OnTenNuocChanging(string value);
     partial void OnTenNuocChanged();
@@ -1855,8 +1855,8 @@ namespace Dangnhap_1.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNuoc", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MaNuoc
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNuoc", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long MaNuoc
 		{
 			get
 			{
@@ -1875,7 +1875,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenNuoc", DbType="NVarChar(20)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenNuoc", DbType="NVarChar(50)")]
 		public string TenNuoc
 		{
 			get
@@ -1895,7 +1895,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoTaVeDatNuoc", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoTaVeDatNuoc", DbType="NVarChar(MAX)")]
 		public string MoTaVeDatNuoc
 		{
 			get
@@ -1967,7 +1967,7 @@ namespace Dangnhap_1.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _MaDienVien;
+		private long _MaDienVien;
 		
 		private string _TenDienVien;
 		
@@ -1981,7 +1981,7 @@ namespace Dangnhap_1.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaDienVienChanging(int value);
+    partial void OnMaDienVienChanging(long value);
     partial void OnMaDienVienChanged();
     partial void OnTenDienVienChanging(string value);
     partial void OnTenDienVienChanged();
@@ -1997,8 +1997,8 @@ namespace Dangnhap_1.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDienVien", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MaDienVien
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDienVien", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long MaDienVien
 		{
 			get
 			{
@@ -2017,7 +2017,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenDienVien", DbType="NVarChar(35)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenDienVien", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
 		public string TenDienVien
 		{
 			get
@@ -2037,7 +2037,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HinhAnhDienVien", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HinhAnhDienVien", DbType="VarChar(200)")]
 		public string HinhAnhDienVien
 		{
 			get
@@ -2057,7 +2057,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoTaVeDienVien", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoTaVeDienVien", DbType="VarChar(MAX)")]
 		public string MoTaVeDienVien
 		{
 			get
@@ -2129,9 +2129,9 @@ namespace Dangnhap_1.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _MaPhim;
+		private long _MaPhim;
 		
-		private int _MaDienVien;
+		private long _MaDienVien;
 		
 		private string _TenVaiDien;
 		
@@ -2143,9 +2143,9 @@ namespace Dangnhap_1.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaPhimChanging(int value);
+    partial void OnMaPhimChanging(long value);
     partial void OnMaPhimChanged();
-    partial void OnMaDienVienChanging(int value);
+    partial void OnMaDienVienChanging(long value);
     partial void OnMaDienVienChanged();
     partial void OnTenVaiDienChanging(string value);
     partial void OnTenVaiDienChanged();
@@ -2158,8 +2158,8 @@ namespace Dangnhap_1.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPhim", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int MaPhim
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPhim", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
+		public long MaPhim
 		{
 			get
 			{
@@ -2182,8 +2182,8 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDienVien", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int MaDienVien
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDienVien", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
+		public long MaDienVien
 		{
 			get
 			{
@@ -2206,7 +2206,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenVaiDien", DbType="NVarChar(15)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenVaiDien", DbType="NVarChar(50)")]
 		public string TenVaiDien
 		{
 			get
@@ -2253,7 +2253,7 @@ namespace Dangnhap_1.Models
 					}
 					else
 					{
-						this._MaDienVien = default(int);
+						this._MaDienVien = default(long);
 					}
 					this.SendPropertyChanged("DienVien");
 				}
@@ -2287,7 +2287,7 @@ namespace Dangnhap_1.Models
 					}
 					else
 					{
-						this._MaPhim = default(int);
+						this._MaPhim = default(long);
 					}
 					this.SendPropertyChanged("Phim");
 				}
@@ -2321,7 +2321,7 @@ namespace Dangnhap_1.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _MaNgonNgu;
+		private long _MaNgonNgu;
 		
 		private string _TenNgonNgu;
 		
@@ -2333,7 +2333,7 @@ namespace Dangnhap_1.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaNgonNguChanging(int value);
+    partial void OnMaNgonNguChanging(long value);
     partial void OnMaNgonNguChanged();
     partial void OnTenNgonNguChanging(string value);
     partial void OnTenNgonNguChanged();
@@ -2347,8 +2347,8 @@ namespace Dangnhap_1.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNgonNgu", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MaNgonNgu
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNgonNgu", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long MaNgonNgu
 		{
 			get
 			{
@@ -2367,7 +2367,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenNgonNgu", DbType="NVarChar(10)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenNgonNgu", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string TenNgonNgu
 		{
 			get
@@ -2387,7 +2387,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoTaVeNgonNgu", DbType="NVarChar(20)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoTaVeNgonNgu", DbType="NVarChar(MAX)")]
 		public string MoTaVeNgonNgu
 		{
 			get
@@ -2459,7 +2459,7 @@ namespace Dangnhap_1.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _MaNguoiDung;
+		private long _MaNguoiDung;
 		
 		private string _HoTen;
 		
@@ -2468,6 +2468,8 @@ namespace Dangnhap_1.Models
 		private string _Email;
 		
 		private string _SDT;
+		
+		private System.Nullable<System.DateTime> _NgaySinh;
 		
 		private string _TaiKhoan;
 		
@@ -2483,7 +2485,7 @@ namespace Dangnhap_1.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaNguoiDungChanging(int value);
+    partial void OnMaNguoiDungChanging(long value);
     partial void OnMaNguoiDungChanged();
     partial void OnHoTenChanging(string value);
     partial void OnHoTenChanged();
@@ -2493,6 +2495,8 @@ namespace Dangnhap_1.Models
     partial void OnEmailChanged();
     partial void OnSDTChanging(string value);
     partial void OnSDTChanged();
+    partial void OnNgaySinhChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgaySinhChanged();
     partial void OnTaiKhoanChanging(string value);
     partial void OnTaiKhoanChanged();
     partial void OnMatKhauChanging(string value);
@@ -2507,8 +2511,8 @@ namespace Dangnhap_1.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNguoiDung", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MaNguoiDung
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNguoiDung", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long MaNguoiDung
 		{
 			get
 			{
@@ -2527,7 +2531,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoTen", DbType="NVarChar(35)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoTen", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string HoTen
 		{
 			get
@@ -2547,7 +2551,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GioiTinh", DbType="NVarChar(3)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GioiTinh", DbType="NVarChar(10)")]
 		public string GioiTinh
 		{
 			get
@@ -2567,7 +2571,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(35)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(100)")]
 		public string Email
 		{
 			get
@@ -2587,7 +2591,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SDT", DbType="Char(10)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SDT", DbType="VarChar(50)")]
 		public string SDT
 		{
 			get
@@ -2607,7 +2611,27 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaiKhoan", DbType="VarChar(20)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgaySinh", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgaySinh
+		{
+			get
+			{
+				return this._NgaySinh;
+			}
+			set
+			{
+				if ((this._NgaySinh != value))
+				{
+					this.OnNgaySinhChanging(value);
+					this.SendPropertyChanging();
+					this._NgaySinh = value;
+					this.SendPropertyChanged("NgaySinh");
+					this.OnNgaySinhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaiKhoan", DbType="VarChar(50)")]
 		public string TaiKhoan
 		{
 			get
@@ -2627,7 +2651,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatKhau", DbType="VarChar(30)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatKhau", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 		public string MatKhau
 		{
 			get
@@ -2749,7 +2773,7 @@ namespace Dangnhap_1.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _MaPhim;
+		private long _MaPhim;
 		
 		private string _TenPhim;
 		
@@ -2763,7 +2787,7 @@ namespace Dangnhap_1.Models
 		
 		private System.Nullable<int> _LuotXem;
 		
-		private System.Nullable<System.DateTime> _ThoiLuong;
+		private System.Nullable<int> _ThoiLuong;
 		
 		private string _HinhBanner;
 		
@@ -2773,9 +2797,9 @@ namespace Dangnhap_1.Models
 		
 		private string _LinkPhimVip;
 		
-		private System.Nullable<int> _MaNuoc;
+		private System.Nullable<long> _MaNuoc;
 		
-		private System.Nullable<int> _MaNgonNgu;
+		private System.Nullable<long> _MaNgonNgu;
 		
 		private EntityRef<DanhGiaCuaPhim> _DanhGiaCuaPhim;
 		
@@ -2797,7 +2821,7 @@ namespace Dangnhap_1.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaPhimChanging(int value);
+    partial void OnMaPhimChanging(long value);
     partial void OnMaPhimChanged();
     partial void OnTenPhimChanging(string value);
     partial void OnTenPhimChanged();
@@ -2811,7 +2835,7 @@ namespace Dangnhap_1.Models
     partial void OnDiemIMDBChanged();
     partial void OnLuotXemChanging(System.Nullable<int> value);
     partial void OnLuotXemChanged();
-    partial void OnThoiLuongChanging(System.Nullable<System.DateTime> value);
+    partial void OnThoiLuongChanging(System.Nullable<int> value);
     partial void OnThoiLuongChanged();
     partial void OnHinhBannerChanging(string value);
     partial void OnHinhBannerChanged();
@@ -2821,9 +2845,9 @@ namespace Dangnhap_1.Models
     partial void OnTrailerPhimChanged();
     partial void OnLinkPhimVipChanging(string value);
     partial void OnLinkPhimVipChanged();
-    partial void OnMaNuocChanging(System.Nullable<int> value);
+    partial void OnMaNuocChanging(System.Nullable<long> value);
     partial void OnMaNuocChanged();
-    partial void OnMaNgonNguChanging(System.Nullable<int> value);
+    partial void OnMaNgonNguChanging(System.Nullable<long> value);
     partial void OnMaNgonNguChanged();
     #endregion
 		
@@ -2840,8 +2864,8 @@ namespace Dangnhap_1.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPhim", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MaPhim
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPhim", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long MaPhim
 		{
 			get
 			{
@@ -2860,7 +2884,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenPhim", DbType="NVarChar(35)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenPhim", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
 		public string TenPhim
 		{
 			get
@@ -2880,7 +2904,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgaySanXuat", DbType="Date")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgaySanXuat", DbType="DateTime")]
 		public System.Nullable<System.DateTime> NgaySanXuat
 		{
 			get
@@ -2900,7 +2924,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayLenSong", DbType="Date")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayLenSong", DbType="DateTime")]
 		public System.Nullable<System.DateTime> NgayLenSong
 		{
 			get
@@ -2920,7 +2944,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiDungPhim", DbType="NVarChar(200)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiDungPhim", DbType="NVarChar(MAX)")]
 		public string NoiDungPhim
 		{
 			get
@@ -2980,8 +3004,8 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThoiLuong", DbType="Date")]
-		public System.Nullable<System.DateTime> ThoiLuong
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThoiLuong", DbType="Int")]
+		public System.Nullable<int> ThoiLuong
 		{
 			get
 			{
@@ -3000,7 +3024,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HinhBanner", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HinhBanner", DbType="VarChar(200)")]
 		public string HinhBanner
 		{
 			get
@@ -3020,7 +3044,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LinkPhimBinhThuong", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LinkPhimBinhThuong", DbType="VarChar(200)")]
 		public string LinkPhimBinhThuong
 		{
 			get
@@ -3040,7 +3064,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrailerPhim", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrailerPhim", DbType="VarChar(200)")]
 		public string TrailerPhim
 		{
 			get
@@ -3060,7 +3084,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LinkPhimVip", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LinkPhimVip", DbType="VarChar(200)")]
 		public string LinkPhimVip
 		{
 			get
@@ -3080,8 +3104,8 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNuoc", DbType="Int")]
-		public System.Nullable<int> MaNuoc
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNuoc", DbType="BigInt")]
+		public System.Nullable<long> MaNuoc
 		{
 			get
 			{
@@ -3104,8 +3128,8 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNgonNgu", DbType="Int")]
-		public System.Nullable<int> MaNgonNgu
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNgonNgu", DbType="BigInt")]
+		public System.Nullable<long> MaNgonNgu
 		{
 			get
 			{
@@ -3249,7 +3273,7 @@ namespace Dangnhap_1.Models
 					}
 					else
 					{
-						this._MaNgonNgu = default(Nullable<int>);
+						this._MaNgonNgu = default(Nullable<long>);
 					}
 					this.SendPropertyChanged("NgonNgu");
 				}
@@ -3283,7 +3307,7 @@ namespace Dangnhap_1.Models
 					}
 					else
 					{
-						this._MaNuoc = default(Nullable<int>);
+						this._MaNuoc = default(Nullable<long>);
 					}
 					this.SendPropertyChanged("DatNuoc");
 				}
@@ -3377,7 +3401,7 @@ namespace Dangnhap_1.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _MaPhuongThucTT;
+		private long _MaPhuongThucTT;
 		
 		private string _TenPhuongThucTT;
 		
@@ -3387,7 +3411,7 @@ namespace Dangnhap_1.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaPhuongThucTTChanging(int value);
+    partial void OnMaPhuongThucTTChanging(long value);
     partial void OnMaPhuongThucTTChanged();
     partial void OnTenPhuongThucTTChanging(string value);
     partial void OnTenPhuongThucTTChanged();
@@ -3399,8 +3423,8 @@ namespace Dangnhap_1.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPhuongThucTT", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MaPhuongThucTT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPhuongThucTT", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long MaPhuongThucTT
 		{
 			get
 			{
@@ -3419,7 +3443,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenPhuongThucTT", DbType="NVarChar(20)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenPhuongThucTT", DbType="NVarChar(50)")]
 		public string TenPhuongThucTT
 		{
 			get
@@ -3491,7 +3515,7 @@ namespace Dangnhap_1.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _MaTag;
+		private long _MaTag;
 		
 		private string _TenTag;
 		
@@ -3503,7 +3527,7 @@ namespace Dangnhap_1.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaTagChanging(int value);
+    partial void OnMaTagChanging(long value);
     partial void OnMaTagChanged();
     partial void OnTenTagChanging(string value);
     partial void OnTenTagChanged();
@@ -3517,8 +3541,8 @@ namespace Dangnhap_1.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTag", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MaTag
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTag", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long MaTag
 		{
 			get
 			{
@@ -3537,7 +3561,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenTag", DbType="NVarChar(15)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenTag", DbType="NVarChar(50)")]
 		public string TenTag
 		{
 			get
@@ -3557,7 +3581,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiDungVeTag", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiDungVeTag", DbType="VarChar(MAX)")]
 		public string NoiDungVeTag
 		{
 			get
@@ -3629,9 +3653,9 @@ namespace Dangnhap_1.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _MaPhim;
+		private long _MaPhim;
 		
-		private int _MaTag;
+		private long _MaTag;
 		
 		private EntityRef<Phim> _Phim;
 		
@@ -3641,9 +3665,9 @@ namespace Dangnhap_1.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaPhimChanging(int value);
+    partial void OnMaPhimChanging(long value);
     partial void OnMaPhimChanged();
-    partial void OnMaTagChanging(int value);
+    partial void OnMaTagChanging(long value);
     partial void OnMaTagChanged();
     #endregion
 		
@@ -3654,8 +3678,8 @@ namespace Dangnhap_1.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPhim", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int MaPhim
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPhim", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
+		public long MaPhim
 		{
 			get
 			{
@@ -3678,8 +3702,8 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTag", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int MaTag
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTag", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
+		public long MaTag
 		{
 			get
 			{
@@ -3729,7 +3753,7 @@ namespace Dangnhap_1.Models
 					}
 					else
 					{
-						this._MaPhim = default(int);
+						this._MaPhim = default(long);
 					}
 					this.SendPropertyChanged("Phim");
 				}
@@ -3763,7 +3787,7 @@ namespace Dangnhap_1.Models
 					}
 					else
 					{
-						this._MaTag = default(int);
+						this._MaTag = default(long);
 					}
 					this.SendPropertyChanged("Tag");
 				}
@@ -3797,7 +3821,7 @@ namespace Dangnhap_1.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _MaTheLoai;
+		private long _MaTheLoai;
 		
 		private string _TenTheLoai;
 		
@@ -3809,7 +3833,7 @@ namespace Dangnhap_1.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaTheLoaiChanging(int value);
+    partial void OnMaTheLoaiChanging(long value);
     partial void OnMaTheLoaiChanged();
     partial void OnTenTheLoaiChanging(string value);
     partial void OnTenTheLoaiChanged();
@@ -3823,8 +3847,8 @@ namespace Dangnhap_1.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTheLoai", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MaTheLoai
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTheLoai", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long MaTheLoai
 		{
 			get
 			{
@@ -3843,7 +3867,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenTheLoai", DbType="NVarChar(19)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenTheLoai", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string TenTheLoai
 		{
 			get
@@ -3863,7 +3887,7 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoTaVeTheLoai", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoTaVeTheLoai", DbType="NVarChar(MAX)")]
 		public string MoTaVeTheLoai
 		{
 			get
@@ -3935,9 +3959,9 @@ namespace Dangnhap_1.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _MaTheLoai;
+		private long _MaTheLoai;
 		
-		private int _MaPhim;
+		private long _MaPhim;
 		
 		private EntityRef<Phim> _Phim;
 		
@@ -3947,9 +3971,9 @@ namespace Dangnhap_1.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaTheLoaiChanging(int value);
+    partial void OnMaTheLoaiChanging(long value);
     partial void OnMaTheLoaiChanged();
-    partial void OnMaPhimChanging(int value);
+    partial void OnMaPhimChanging(long value);
     partial void OnMaPhimChanged();
     #endregion
 		
@@ -3960,8 +3984,8 @@ namespace Dangnhap_1.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTheLoai", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int MaTheLoai
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTheLoai", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
+		public long MaTheLoai
 		{
 			get
 			{
@@ -3984,8 +4008,8 @@ namespace Dangnhap_1.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPhim", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int MaPhim
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPhim", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
+		public long MaPhim
 		{
 			get
 			{
@@ -4035,7 +4059,7 @@ namespace Dangnhap_1.Models
 					}
 					else
 					{
-						this._MaPhim = default(int);
+						this._MaPhim = default(long);
 					}
 					this.SendPropertyChanged("Phim");
 				}
@@ -4069,7 +4093,7 @@ namespace Dangnhap_1.Models
 					}
 					else
 					{
-						this._MaTheLoai = default(int);
+						this._MaTheLoai = default(long);
 					}
 					this.SendPropertyChanged("TheLoai");
 				}

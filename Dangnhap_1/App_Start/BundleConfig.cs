@@ -25,6 +25,9 @@ namespace Dangnhap_1
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/login").Include(
+                      "~/Content//all.min.css",
+                      "~/Content/sb-admin-2.min.css"));
         }
     }
 }
