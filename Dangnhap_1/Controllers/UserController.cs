@@ -31,10 +31,7 @@ namespace Dangnhap_1.Controllers
                 return false;
             }
         }
-        public ActionResult Index()
-        {
-            return View();
-        }
+        // action Register 
         [HttpGet]
         public ActionResult Register()
         {
@@ -51,7 +48,7 @@ namespace Dangnhap_1.Controllers
             var matkhau = collection["Matkhau"];
             var matkhaunhaplai = collection["Matkhaunhaplai"];
             var email = collection["email"];
-
+            // valadiate
             if (String.IsNullOrEmpty(hoten))
             {
                 ViewData["Loi1"] = "Họ tên khách hàng không được để trống";
@@ -101,6 +98,7 @@ namespace Dangnhap_1.Controllers
             }
             return this.Register();
         }
+        // Action Login
         [HttpGet]
 
         public ActionResult Login()
@@ -134,5 +132,9 @@ namespace Dangnhap_1.Controllers
             }
             return View();
         }
+        // Forget password
+        
+        // change password
+
     }
 }
