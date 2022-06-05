@@ -112,11 +112,12 @@ namespace Dangnhap_1.Controllers
         {
             var tendn = collection["Tendn"];
             var matkhau = collection["MatKhau"];
+            var ghinho = collection["GhiNho"];
             if (String.IsNullOrEmpty(tendn))
             {
                 ViewData["Loi1"] = "Tên đăng nhập không được bỏ trống!";
             }
-            else if (!String.IsNullOrEmpty(matkhau))
+            else if (String.IsNullOrEmpty(matkhau))
             {
                 ViewData["Loi2"] = "Mật khẩu không được bỏ trống!";
             }
