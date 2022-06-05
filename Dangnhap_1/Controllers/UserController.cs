@@ -133,7 +133,82 @@ namespace Dangnhap_1.Controllers
             return View();
         }
         // Forget password
-        
+
+        Using Systems.Net.Mail;
+
+        public class Mail
+        {
+            public MailAddress to { get; set; }
+            public MailAddress from { get; set; }
+            public string sub { get; set; }
+            public string body { get; set; }
+
+            public string reg()
+            {
+                string feed = "Registration Successful";
+                var m = new System.Net.Mail.MailMessage()
+                {
+                    Subject = "",
+                    Body = body,
+                    IsBodyHtml = true
+                };
+                m.From = new MailAddress("Mxolisi@gmail.com  ", "Administrator");
+                m.To.Add(to);
+                SmtpClient smtp = new SmtpClient
+                {
+                    Host = "pod51014.outlook.com",
+                    //Host = "smtp-mail.outlook.com",
+                    Port = 587,
+                    Credentials = new System.Net.NetworkCredential("Mxolisi@gmail.com ", " Dut324232"),
+                    EnableSsl = true
+                };
+
+                try
+                {
+                    smtp.Send(m);
+                    // feed = "";
+                }
+                catch (Exception e)
+                {
+
+                }
+
+                return feed;
+            }
+
+            public string fogot()
+            {
+                string feedback = "";
+
+                var m = new System.Net.Mail.MailMessage()
+                {
+                    Subject = "Reset mật khẩu",
+                    Body = body,
+                    IsBodyHtml = true
+                };
+                m.From = new MailAddress("Mxolisi@gmail.com ", "Administrator");
+                m.To.Add(to);
+                SmtpClient smtp = new SmtpClient
+                {
+                    Host = "pod51014.outlook.com",
+                    Port = 587,
+                    Credentials = new System.Net.NetworkCredential("Mxolisi@gmail.com ", "Dut324232"),
+                    EnableSsl = true
+                };
+
+                try
+                {
+                    smtp.Send(m);
+                    feedback = "Kiểm tra email của bạn để xác thực";
+                }
+                catch (Exception e)
+                {
+                    feedback = "Không thể gửi email:" + e.Message;
+                }
+                return feedback;
+            }
+        }
+
         // change password
 
     }
